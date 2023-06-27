@@ -47,7 +47,7 @@ int _printf(const char *format, ...)
 				else
 				{
 					len += function(arguments, buffer, ibuf);
-					i += evaluate_print_function(format, i + 1);
+					i += get_identifier_length(format, i + 1);
 				}
 			}
 			i++;

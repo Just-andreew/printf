@@ -1,59 +1,14 @@
 #include "main.h"
 /**
- * print_hex - prints a decimal in hexadecimal
- * @arguments: input string
+ * print_upx - prints a decimal in hexadecimal
+ * @arguments: The character to print
  * @buf: buffer pointer
  * @ibuf: index for buffer pointer
  * Return: number of chars printed
  */
-int print_hex(va_list arguments, char *buf, unsigned int ibuf)
+int print_upx(va_list arguments, char *buf, unsigned int ibuf)
 {
 	int int_input, i, isnegative, count, first_digit;
-	char *hexadecimal, *binary;
-
-	int_input = va_arg(arguments, int);
-	isnegative = 0;
-	if (int_input == 0)
-	{
-		ibuf = handle_buffer(buf, '0', ibuf);
-		return (1);
-	}
-	if (int_input < 0)
-	{
-		int_input = (int_input * -1) - 1;
-		isnegative = 1;
-	}
-	binary = malloc(sizeof(char) * (32 + 1));
-	binary = fill_binary_array(binary, int_input, isnegative, 32);
-	hexadecimal = malloc(sizeof(char) * (8 + 1));
-	hexadecimal = fill_hex_array(binary, hexadecimal, 0, 8);
-	for (first_digit = i = count = 0; hexadecimal[i]; i++)
-	{
-		if (hexadecimal[i] != '0' && first_digit == 0)
-			first_digit = 1;
-		if (first_digit)
-		{
-			ibuf = handle_buffer(buf, hexadecimal[i], ibuf);
-			count++;
-		}
-	}
-	free(binary);
-	free(hexadecimal);
-	return (count);
-
-}
-
-
-/**
- * prinhhex - prints a short decimal in hexadecimal
- * @arguments: input string
- * @buf: buffer pointer
- * @ibuf: index for buffer pointer
- * Return: number of chars printed
- */
-int prinhhex(va_list arguments, char *buf, unsigned int ibuf)
-{
-	short int int_input, i, isnegative, count, first_digit;
 	char *hexadecimal, *binary;
 
 	int_input = va_arg(arguments, int);
@@ -68,11 +23,10 @@ int prinhhex(va_list arguments, char *buf, unsigned int ibuf)
 		int_input = (int_input * -1) - 1;
 		isnegative = 1;
 	}
-
-	binary = malloc(sizeof(char) * (16 + 1));
-	binary = fill_binary_array(binary, int_input, isnegative, 16);
-	hexadecimal = malloc(sizeof(char) * (4 + 1));
-	hexadecimal = fill_hex_array(binary, hexadecimal, 0, 4);
+	binary = malloc(sizeof(char) * (32 + 1));
+	binary = fill_binary_array(binary, int_input, isnegative, 32);
+	hexadecimal = malloc(sizeof(char) * (8 + 1));
+	hexadecimal = fill_hex_array(binary, hexadecimal, 1, 8);
 	for (first_digit = i = count = 0; hexadecimal[i]; i++)
 	{
 		if (hexadecimal[i] != '0' && first_digit == 0)
@@ -89,13 +43,62 @@ int prinhhex(va_list arguments, char *buf, unsigned int ibuf)
 }
 
 /**
- * prinnhex - print number in hex begining with zero
+ * prinhupx - prints a short decimal in hexadecimal
+ * @arguments: The character to print
+ * @buf: buffer pointer
+ * @ibuf: index for buffer pointer
+ * Return: number of chars printed
+ */
+int prinhupx(va_list arguments, char *buf, unsigned int ibuf)
+{
+	short int int_input, i, isnegative, count, first_digit;
+	char *hexadecimal, *binary;
+
+	int_input = va_arg(arguments, int);
+	isnegative = 0;
+
+	if (int_input == 0)
+	{
+		ibuf = handl_buf(buf, '0', ibuf);
+		return (1);
+	}
+	if (int_input < 0)
+	{
+		int_input = (int_input * -1) - 1;
+		isnegative = 1;
+	}
+
+	binary = malloc(sizeof(char) * (16 + 1));
+	binary = fill_binary_array(binary, int_input, isnegative, 16);
+	hexadecimal = malloc(sizeof(char) * (4 + 1));
+	hexadecimal = fill_hex_array(binary, hexadecimal, 1, 4);
+
+	for (first_digit = i = count = 0; hexadecimal[i]; i++)
+	{
+		if (hexadecimal[i] != '0' && first_digit == 0)
+			first_digit = 1;
+		if (first_digit)
+		{
+			ibuf = handl_buf(buf, hexadecimal[i], ibuf);
+			count++;
+		}
+	}
+
+	free(binary);
+	free(hexadecimal);
+
+	return (count);
+}
+
+
+/**
+ * prinnupx - prints number in uppercase hex
  * @arguments: input string
  * @buf: buffer pointer
  * @ibuf: index for buffer pointer
  * Return: number of chars printed
  */
-int prinnhex(va_list arguments, char *buf, unsigned int ibuf)
+int prinnupx(va_list arguments, char *buf, unsigned int ibuf)
 {
 	int int_input, i, isnegative, count, first_digit;
 	char *hexadecimal, *binary;
@@ -113,11 +116,11 @@ int prinnhex(va_list arguments, char *buf, unsigned int ibuf)
 		isnegative = 1;
 	}
 	ibuf = handl_buf(buf, '0', ibuf);
-	ibuf = handl_buf(buf, 'x', ibuf);
+	ibuf = handl_buf(buf, 'X', ibuf);
 	binary = malloc(sizeof(char) * (32 + 1));
 	binary = fill_binary_array(binary, int_input, isnegative, 32);
 	hexadecimal = malloc(sizeof(char) * (8 + 1));
-	hexadecimal = fill_hex_array(binary, hexadecimal, 0, 8);
+	hexadecimal = fill_hex_array(binary, hexadecimal, 1, 8);
 	for (first_digit = i = count = 0; hexadecimal[i]; i++)
 	{
 		if (hexadecimal[i] != '0' && first_digit == 0)
@@ -133,14 +136,15 @@ int prinnhex(va_list arguments, char *buf, unsigned int ibuf)
 	return (count + 2);
 }
 
+
 /**
- * prinlhex - prints a long decimal in hexadecimal
- * @arguments: input string
+ * prinlupx - prints a long decimal in hexadecimal
+ * @arguments: The character to print
  * @buf: buffer pointer
  * @ibuf: index for buffer pointer
  * Return: number of chars printed
  */
-int prinlhex(va_list arguments, char *buf, unsigned int ibuf)
+int prinlupx(va_list arguments, char *buf, unsigned int ibuf)
 {
 	long int int_input, i, isnegative, count, first_digit;
 	char *hexadecimal, *binary;
@@ -161,7 +165,7 @@ int prinlhex(va_list arguments, char *buf, unsigned int ibuf)
 	binary = malloc(sizeof(char) * (64 + 1));
 	binary = fill_binary_array(binary, int_input, isnegative, 64);
 	hexadecimal = malloc(sizeof(char) * (16 + 1));
-	hexadecimal = fill_hex_array(binary, hexadecimal, 0, 16);
+	hexadecimal = fill_hex_array(binary, hexadecimal, 1, 16);
 	for (first_digit = i = count = 0; hexadecimal[i]; i++)
 	{
 		if (hexadecimal[i] != '0' && first_digit == 0)

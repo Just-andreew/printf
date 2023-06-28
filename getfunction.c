@@ -1,26 +1,5 @@
 #include "main.h"
 
-print_t print_funcs[] = {
-    {"p", print_add},
-    {"li", prinlint},
-    {"lu", prinlunt},
-    {"lo", prinloct},
-    {"lx", prinlhex},
-    {"lX", prinlupx},
-    {"hi", prinhint},
-    {"hu", prinhunt},
-    {"ho", prinhoct},
-    {"hx", prinhhex},
-    {"hX", prinhupx},
-    {"ti", prinpint},
-    {"to", prinnoct},
-    {"tx", prinnhex},
-    {"tX", prinnupx},
-    {"si", prinsint},
-    {NULL, NULL}
-};
-
-
 /**
  * get_print_func - selects the correct function to perform the operation.
  * @s: argument identifier
@@ -36,8 +15,8 @@ int (*get_print_func(const char *s, int index))(va_list, char *, unsigned int)
 		{"b", print_bnr}, {"u", print_unt},
 		{"o", print_oct}, {"x", print_hex},
 		{"X", print_upx}, {"S", print_usr},
-		{"p", print_add}, {"li", prinsint},
-		{"ld", prinsint}, {"lu", prinlunt},
+		{"p", print_add}, {"li", prinlint},
+		{"ld", prinlint}, {"lu", prinlunt},
 		{"lo", prinloct}, {"lx", prinlhex},
 		{"lX", prinlupx}, {"hi", prinhint},
 		{"hd", prinhint}, {"hu", prinhunt},

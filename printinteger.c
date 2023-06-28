@@ -17,7 +17,7 @@ int print_int(va_list arguments, char *buf, unsigned int ibuf)
 	if (int_input < 0)
 	{
 		int_in = int_input * -1;
-		ibuf = handl_buffer(buf, '-', ibuf);
+		ibuf = handle_buffer(buf, '-', ibuf);
 		isneg = 1;
 	}
 	else

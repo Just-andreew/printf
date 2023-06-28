@@ -20,7 +20,7 @@ int print_rot(va_list arguments, char *buf, unsigned int ibuf)
 	if (str == NULL)
 	{
 		for (i = 0; nill[i]; i++)
-			ibuf = handl_buf(buf, nill[i], ibuf);
+			ibuf = handle_buffer(buf, nill[i], ibuf);
 		return (6);
 	}
 	for (i = 0; str[i]; i++)
@@ -30,12 +30,12 @@ int print_rot(va_list arguments, char *buf, unsigned int ibuf)
 			if (str[i] == alf[j])
 			{
 				k = 1;
-				ibuf = handl_buf(buf, rot[j], ibuf);
+				ibuf = handle_buffer(buf, rot[j], ibuf);
 				break;
 			}
 		}
 		if (k == 0)
-			ibuf = handl_buf(buf, str[i], ibuf);
+			ibuf = handle_buffer(buf, str[i], ibuf);
 	}
 	return (i);
 }
@@ -57,11 +57,11 @@ int print_str(va_list arguments, char *buf, unsigned int ibuf)
 	if (str == NULL)
 	{
 		for (i = 0; nill[i]; i++)
-			ibuf = handl_buf(buf, nill[i], ibuf);
+			ibuf = handle_buffer(buf, nill[i], ibuf);
 		return (6);
 	}
 	for (i = 0; str[i]; i++)
-		ibuf = handl_buf(buf, str[i], ibuf);
+		ibuf = handle_buffer(buf, str[i], ibuf);
 	return (i);
 }
 
@@ -83,7 +83,7 @@ int print_rev(va_list arguments, char *buf, unsigned int ibuf)
 	if (str == NULL)
 	{
 		for (i = 0; nill[i]; i++)
-			ibuf = handl_buf(buf, nill[i], ibuf);
+			ibuf = handle_buffer(buf, nill[i], ibuf);
 		return (6);
 	}
 	for (i = 0; str[i]; i++)
@@ -91,7 +91,7 @@ int print_rev(va_list arguments, char *buf, unsigned int ibuf)
 	j = i - 1;
 	for (; j >= 0; j--)
 	{
-		ibuf = handl_buf(buf, str[j], ibuf);
+		ibuf = handle_buffer(buf, str[j], ibuf);
 	}
 	return (i);
 }

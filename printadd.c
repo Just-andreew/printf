@@ -20,7 +20,7 @@ int print_add(va_list arguments, char *buf, unsigned int ibuf)
 	if (add == NULL)
 	{
 		for (i = 0; nill[i]; i++)
-			ibuf = handle_buf(buf, nill[i], ibuf);
+			ibuf = handle_buffer(buf, nill[i], ibuf);
 		return (5);
 	}
 	int_input = (intptr_t)add;
@@ -42,7 +42,7 @@ int print_add(va_list arguments, char *buf, unsigned int ibuf)
 			first_digit = 1;
 		if (first_digit)
 		{
-			ibuf = handl_buffer(buf, hexadecimal[i], ibuf);
+			ibuf = handle_buffer(buf, hexadecimal[i], ibuf);
 			count++;
 		}
 	}

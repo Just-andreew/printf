@@ -1,12 +1,19 @@
 #include "main.h"
 
 /**
- * print_buf - prints buffer
- * @buf: buffer pointer
- * @nbuf: number of bytes to print
- * Return: number of bytes printed.
+ * print_buffer - Prints the contents of the buffer if it exists
+ * @buf: Buffer containing characters
+ * @nbuf: Number of characters in the buffer
+ *
+ * Description: This function prints the characters stored in the buffer and
+ *              resets the buffer.
  */
-int print_buffer(char *buf, unsigned int nbuf)
+void print_buffer(char *buf, unsigned int nbuf)
 {
-	return (write(1, buf, nbuf));
+	if (nbuf > 0)
+	{
+		write(1, buf, nbuf);
+	}
 }
+
+

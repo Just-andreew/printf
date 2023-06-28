@@ -8,7 +8,7 @@
  *
  * Return: index of buffer pointer.
  */
-unsigned int handle_buffer(char *buf, char c, unsigned int ibuf)
+unsigned int handle_buffer(char buf[], char c, unsigned int ibuf)
 {
 	if (ibuf == 1024)
 	{

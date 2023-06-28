@@ -2,18 +2,18 @@
 
 /**
  * print_buffer - Prints the contents of the buffer if it exists
- * @buffer: Array of characters
- * @buff_ind: Pointer to the index representing the buffer length
+ * @buf: Buffer containing characters
+ * @nbuf: Number of characters in the buffer
  *
  * Description: This function prints the characters stored in the buffer and
- *              resets the buffer index.
+ *              resets the buffer.
  */
-void print_buffer(char *buffer, int *buff_ind)
+void print_buffer(char *buf, unsigned int nbuf)
 {
-	if (*buff_ind > 0)
+	if (nbuf > 0)
 	{
-		write(1, buffer, *buff_ind);
-		*buff_ind = 0;
+		write(1, buf, nbuf);
 	}
 }
+
 

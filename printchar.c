@@ -26,7 +26,7 @@ int print_chr(va_list arguments, char *buf, unsigned int ibuf)
  */
 int print_prg(va_list a __attribute__((unused)), char *buf, unsigned int i)
 {
-	handl_buf(buf, '%', i);
+	handle_buffer(buf, '%', i);
 
 	return (1);
 }

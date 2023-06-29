@@ -15,7 +15,7 @@ int prinloct(va_list arguments, char *buf, unsigned int ibuf)
 	isnegative = 0;
 	if (int_input == 0)
 	{
-		ibuf = handl_buf(buf, '0', ibuf);
+		ibuf = handle_buffer(buf, '0', ibuf);
 		return (1);
 	}
 	if (int_input < 0)
@@ -34,7 +34,7 @@ int prinloct(va_list arguments, char *buf, unsigned int ibuf)
 			first_digit = 1;
 		if (first_digit)
 		{
-			ibuf = handl_buf(buf, octal[i], ibuf);
+			ibuf = handle_buffer(buf, octal[i], ibuf);
 			count++;
 		}
 	}
@@ -60,7 +60,7 @@ int prinnoct(va_list arguments, char *buf, unsigned int ibuf)
 	isnegative = 0;
 	if (int_input == 0)
 	{
-		ibuf = handl_buf(buf, '0', ibuf);
+		ibuf = handle_buffer(buf, '0', ibuf);
 		return (1);
 	}
 	if (int_input < 0)
@@ -68,7 +68,7 @@ int prinnoct(va_list arguments, char *buf, unsigned int ibuf)
 		int_input = (int_input * -1) - 1;
 		isnegative = 1;
 	}
-	ibuf = handl_buf(buf, '0', ibuf);
+	ibuf = handle_buffer(buf, '0', ibuf);
 	binary = malloc(sizeof(char) * (32 + 1));
 	binary = fill_binary_array(binary, int_input, isnegative, 32);
 	octal = malloc(sizeof(char) * (11 + 1));
@@ -79,7 +79,7 @@ int prinnoct(va_list arguments, char *buf, unsigned int ibuf)
 			first_digit = 1;
 		if (first_digit)
 		{
-			ibuf = handl_buf(buf, octal[i], ibuf);
+			ibuf = handle_buffer(buf, octal[i], ibuf);
 			count++;
 		}
 	}
@@ -105,7 +105,7 @@ int print_oct(va_list arguments, char *buf, unsigned int ibuf)
 	isnegative = 0;
 	if (int_input == 0)
 	{
-		ibuf = handl_buf(buf, '0', ibuf);
+		ibuf = handle_buffer(buf, '0', ibuf);
 		return (1);
 	}
 	if (int_input < 0)
@@ -123,7 +123,7 @@ int print_oct(va_list arguments, char *buf, unsigned int ibuf)
 			first_digit = 1;
 		if (first_digit)
 		{
-			ibuf = handl_buf(buf, octal[i], ibuf);
+			ibuf = handle_buffer(buf, octal[i], ibuf);
 			count++;
 		}
 	}
@@ -148,7 +148,7 @@ int prinhoct(va_list arguments, char *buf, unsigned int ibuf)
 	isnegative = 0;
 	if (int_input == 0)
 	{
-		ibuf = handl_buf(buf, '0', ibuf);
+		ibuf = handle_buffer(buf, '0', ibuf);
 		return (1);
 	}
 	if (int_input < 0)
@@ -167,10 +167,11 @@ int prinhoct(va_list arguments, char *buf, unsigned int ibuf)
 			first_digit = 1;
 		if (first_digit)
 		{
-			ibuf = handl_buf(buf, octal[i], ibuf);
+			ibuf = handle_buffer(buf, octal[i], ibuf);
 			count++;
 		}
 	}
 	free(binary);
 	free(octal);
 	return (count);
+}	

@@ -15,7 +15,7 @@ int print_upx(va_list arguments, char *buf, unsigned int ibuf)
 	isnegative = 0;
 	if (int_input == 0)
 	{
-		ibuf = handl_buf(buf, '0', ibuf);
+		ibuf = handle_buffer(buf, '0', ibuf);
 		return (1);
 	}
 	if (int_input < 0)
@@ -33,7 +33,7 @@ int print_upx(va_list arguments, char *buf, unsigned int ibuf)
 			first_digit = 1;
 		if (first_digit)
 		{
-			ibuf = handl_buf(buf, hexadecimal[i], ibuf);
+			ibuf = handle_buffer(buf, hexadecimal[i], ibuf);
 			count++;
 		}
 	}
@@ -59,7 +59,7 @@ int prinhupx(va_list arguments, char *buf, unsigned int ibuf)
 
 	if (int_input == 0)
 	{
-		ibuf = handl_buf(buf, '0', ibuf);
+		ibuf = handle_buffer(buf, '0', ibuf);
 		return (1);
 	}
 	if (int_input < 0)
@@ -79,7 +79,7 @@ int prinhupx(va_list arguments, char *buf, unsigned int ibuf)
 			first_digit = 1;
 		if (first_digit)
 		{
-			ibuf = handl_buf(buf, hexadecimal[i], ibuf);
+			ibuf = handle_buffer(buf, hexadecimal[i], ibuf);
 			count++;
 		}
 	}
@@ -107,7 +107,7 @@ int prinnupx(va_list arguments, char *buf, unsigned int ibuf)
 	isnegative = 0;
 	if (int_input == 0)
 	{
-		ibuf = handl_buf(buf, '0', ibuf);
+		ibuf = handle_buffer(buf, '0', ibuf);
 		return (1);
 	}
 	if (int_input < 0)
@@ -115,8 +115,8 @@ int prinnupx(va_list arguments, char *buf, unsigned int ibuf)
 		int_input = (int_input * -1) - 1;
 		isnegative = 1;
 	}
-	ibuf = handl_buf(buf, '0', ibuf);
-	ibuf = handl_buf(buf, 'X', ibuf);
+	ibuf = handle_buffer(buf, '0', ibuf);
+	ibuf = handle_buffer(buf, 'X', ibuf);
 	binary = malloc(sizeof(char) * (32 + 1));
 	binary = fill_binary_array(binary, int_input, isnegative, 32);
 	hexadecimal = malloc(sizeof(char) * (8 + 1));
@@ -127,7 +127,7 @@ int prinnupx(va_list arguments, char *buf, unsigned int ibuf)
 			first_digit = 1;
 		if (first_digit)
 		{
-			ibuf = handl_buf(buf, hexadecimal[i], ibuf);
+			ibuf = handle_buffer(buf, hexadecimal[i], ibuf);
 			count++;
 		}
 	}
@@ -153,7 +153,7 @@ int prinlupx(va_list arguments, char *buf, unsigned int ibuf)
 	isnegative = 0;
 	if (int_input == 0)
 	{
-		ibuf = handl_buf(buf, '0', ibuf);
+		ibuf = handle_buffer(buf, '0', ibuf);
 		return (1);
 	}
 	if (int_input < 0)
@@ -172,7 +172,7 @@ int prinlupx(va_list arguments, char *buf, unsigned int ibuf)
 			first_digit = 1;
 		if (first_digit)
 		{
-			ibuf = handl_buf(buf, hexadecimal[i], ibuf);
+			ibuf = handle_buffer(buf, hexadecimal[i], ibuf);
 			count++;
 		}
 	}

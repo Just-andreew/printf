@@ -50,6 +50,7 @@ int prinsint(va_list arguments, char *buf, unsigned int ibuf);
 int (*get_print_func(const char *s, int index))(va_list, char *, unsigned int);
 int ev_print_func(const char *s, int index);
 int print_buf(char *buf, unsigned int nbuf);
+int get_flags(const char *format, int *i)
 unsigned int handle_buffer(char *buf, char c, unsigned int ibuf);
 void print_buffer(char *buf, unsigned int nbuf);
 char *fill_binary_array(char *binary, long int int_in, int isneg, int limit);
